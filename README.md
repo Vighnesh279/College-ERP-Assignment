@@ -1,138 +1,79 @@
-\# Agile and DevOps Assignment – College ERP System
+# Agile and DevOps Assignment – College ERP System
 
+## Application Domain
 
+**College ERP System**
 
-\## Application Domain
+This project implements the Agile, Git/GitHub, and CI/CD practices required for the Agile and DevOps assignment.
 
-College ERP System
+---
 
+# Assignment Overview
 
+The project is divided into three major parts:
 
-\---
+- **Q1 – Agile and Scrum using Jira**
+- **Q2 – Source Code Management using Git and GitHub**
+- **Q3 – CI/CD using GitHub Actions**
 
+---
 
+# Q1 – Agile and Scrum using Jira
 
-\# Assignment Questions
+## Objective
 
+Apply Agile principles and Scrum techniques to develop and prioritize User Stories with suitable Acceptance Criteria and manage the Product Backlog using Jira.
 
+## Implementation
 
-\## Q1 – Agile Principles and Jira
+The College ERP System was selected as the application domain.
 
+Eight User Stories were created in Jira:
 
+1. Student Login to College ERP
+2. Student Attendance Tracking
+3. Student Timetable Access
+4. Student Examination Results
+5. Faculty Attendance Management
+6. Faculty Study Material Upload
+7. Student College Notices
+8. Student Profile Management
 
-\*\*Question:\*\*
+The User Stories were prioritized according to their importance.
 
+A Scrum Sprint was created with the following configuration:
 
+- **Sprint:** College ERP Sprint 1
+- **Duration:** 2 weeks
+- **Sprint Goal:** Implement the core student features of the College ERP system including secure login, attendance tracking, timetable access, and examination results.
 
-Apply Agile principles and techniques to develop and prioritize User Stories with suitable Acceptance Criteria for any one application domain (E-commerce / Healthcare / College ERP / Banking / Food Delivery), and implement the Product Backlog using Jira.
+The first four high-priority student features were included in Sprint 1 and moved through the Scrum workflow until completion.
 
+---
 
+# Q2 – Source Code Management using Git and GitHub
 
-\*\*Implementation:\*\*
+## Objective
 
-\- Application Domain: College ERP System
+Implement source-code management practices using Git and GitHub, including repository creation, commit management, branching, merging, and remote repository management.
 
-\- User Stories developed and prioritized in Jira
+## Implementation
 
-\- Acceptance Criteria defined for each User Story
+A Git repository was created for the College ERP project.
 
-\- Product Backlog created in Jira
+The following Git practices were implemented:
 
-\- Scrum Sprint 1 created
+- Git repository initialization
+- Main branch creation
+- Initial commit
+- Feature branch creation
+- Student Login feature development
+- Feature commit
+- Branch merging
+- GitHub remote repository creation
+- Pushing the project to GitHub
 
-\- Sprint planning and execution performed
+### Feature Branch
 
-\- User Stories moved through To Do, In Progress, and Done
-
-
-
-\*\*Tools Used:\*\*
-
-\- Jira
-
-\- Scrum
-
-
-
-\---
-
-
-
-\## Q2 – Git and GitHub
-
-
-
-\*\*Question:\*\*
-
-
-
-Implement source-code management practices using Git and GitHub for the application developed in Assignment 1. Create a Git repository, perform commit management, create and merge branches, and collaborate with team members through GitHub.
-
-
-
-\*\*Implementation:\*\*
-
-\- Git repository created for the College ERP System
-
-\- Source code managed using Git
-
-\- Commits performed using Git
-
-\- Feature branches created
-
-\- Branches merged into the main branch
-
-\- Repository uploaded to GitHub
-
-\- GitHub used for source-code collaboration
-
-
-
-\*\*Tools Used:\*\*
-
-\- Git
-
-\- GitHub
-
-
-
-\---
-
-
-
-\## Q3 – CI/CD Pipeline
-
-
-
-\*\*Question:\*\*
-
-
-
-Apply CI/CD practices to the application and Git repository developed in Assignments 1 and 2 by configuring and implementing an automated CI/CD pipeline using Jenkins or GitHub Actions to build, test, package, and deploy the application.
-
-
-
-\*\*Implementation:\*\*
-
-\- CI/CD pipeline configuration
-
-\- Automated build
-
-\- Automated testing
-
-\- Application packaging
-
-\- Deployment
-
-\- Pipeline execution through GitHub Actions
-
-
-
-\*\*Tools Used:\*\*
-
-\- GitHub Actions
-
-\- GitHub
-
-\- Git
-
+```text
+feature/student-login
