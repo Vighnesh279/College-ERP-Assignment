@@ -1,130 +1,53 @@
-\# Q2 – Source Code Management using Git and GitHub
+# Q2 – Source Code Management using Git and GitHub
 
+## Assignment Objective
 
+Implement source-code management practices using Git and GitHub for the College ERP application.
 
-\## Assignment Question
+The implementation includes:
 
+- Git repository creation
+- Commit management
+- Branch creation
+- Feature development
+- Branch merging
+- GitHub repository management
+- Source code hosting
 
+---
 
-Implement source-code management practices using Git and GitHub for the application developed in Assignment 1. Create a Git repository, perform commit management, create and merge branches, and collaborate with team members through GitHub.
+# Application
 
+## College ERP System
 
+A simple web-based College ERP interface was developed using HTML, CSS, and JavaScript.
 
-\---
+The application includes:
 
+- Student Login
+- Student Attendance
+- Timetable
+- Examination Results
+- College Notices
+- Student-related ERP functionality
 
+---
 
-\## 1. Application Used
-
-
-
-\*\*Application:\*\* College ERP System
-
-
-
-The College ERP System was selected as the application domain in Assignment 1. The application provides academic management features such as:
-
-
-
-\- Student Login
-
-\- Student Attendance
-
-\- Student Timetable
-
-\- Examination Results
-
-\- College Notices
-
-
-
-\---
-
-
-
-\## 2. Objective
-
-
-
-The objective of this assignment is to implement source-code management practices using Git and GitHub by:
-
-
-
-\- Creating a Git repository
-
-\- Managing source code using Git
-
-\- Performing commits
-
-\- Creating feature branches
-
-\- Developing a feature in a separate branch
-
-\- Merging the feature branch into the main branch
-
-\- Uploading the repository to GitHub
-
-\- Maintaining the project source code in a remote repository
-
-
-
-\---
-
-
-
-\## 3. Tools Used
-
-
+# Tools Used
 
 | Tool | Purpose |
-
-|------|---------|
-
+|---|---|
 | Git | Distributed version control |
-
 | GitHub | Remote repository and source-code hosting |
+| HTML | Web application structure |
+| CSS | Web application styling |
+| JavaScript | Client-side functionality |
 
-| Command Prompt | Executing Git commands |
+---
 
-| HTML/CSS/JavaScript | College ERP application |
+# Git Repository
 
+The local Git repository was created using:
 
-
-\---
-
-
-
-\## 4. Repository Structure
-
-
-
-```text
-
-College-ERP-Assignment/
-
-│
-
-├── README.md
-
-│
-
-├── Q1-Agile-Jira/
-
-│   └── README.md
-
-│
-
-├── Q2-Git-GitHub/
-
-│   ├── README.md
-
-│   └── college-erp/
-
-│       └── index.html
-
-│
-
-└── Q3-CI-CD/
-
-&#x20;   └── README.md
-
+```bash
+git init
