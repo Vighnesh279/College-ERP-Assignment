@@ -1,0 +1,93 @@
+name: College ERP CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Verify application files
+        run: |
+          echo "Checking College ERP application..."
+          test -f Q2-Git-GitHub/college-erp/index.html
+          echo "Application files verified successfully."
+
+  test:
+    name: Test Application
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Run application tests
+        run: |
+          echo "Running College ERP tests..."
+          test -f Q2-Git-GitHub/college-erp/index.html
+          grep -q "<html" Q2-Git-GitHub/college-erp/index.html
+          grep -q "College ERP" Q2-Git-GitHub/college-erp/index.html
+          echo "All tests passed."
+
+  package:
+    name: Package Application
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Create deployment package
+        run: |
+          mkdir package
+          cp Q2-Git-GitHub/college-erp/index.html package/
+          echo "Application packaged successfully."
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: college-erp-package
+          path: package/
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: package
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: Q2-Git-GitHub/college-erp
+
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
