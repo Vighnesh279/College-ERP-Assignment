@@ -51,8 +51,27 @@ jobs:
 
       - name: Verify deployed application
         run: |
-          curl --fail --show-error --retry 10 --retry-connrefused --retry-delay 2 http://localhost:5000/health
+          echo "Waiting for the application container to become healthy..."
+          for attempt in $(seq 1 30); do
+            status=$(docker inspect --format='{{.State.Health.Status}}' college-erp-q1 2>/dev/null || true)
+            echo "Attempt ${attempt}: ${status:-not available}"
+            if [ "$status" = "healthy" ]; then
+              break
+            fi
+            sleep 2
+          done
+
           docker compose ps
+          status=$(docker inspect --format='{{.State.Health.Status}}' college-erp-q1)
+          test "$status" = "healthy"
+
+          curl --fail --show-error --retry 5 --retry-all-errors --retry-delay 2 http://127.0.0.1:5000/health
+
+      - name: Show deployment logs on failure
+        if: failure()
+        run: |
+          docker compose ps || true
+          docker compose logs --no-color web || true
 
       - name: Stop deployment
         if: always()
