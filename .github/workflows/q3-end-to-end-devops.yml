@@ -1,0 +1,151 @@
+name: Q3 End-to-End DevOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Assignment-2/Q2-MLflow-Monitoring/**'
+      - 'Assignment-2/Q3-End-to-End-DevOps/**'
+      - '.github/workflows/q3-end-to-end-devops.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'Assignment-2/Q2-MLflow-Monitoring/**'
+      - 'Assignment-2/Q3-End-to-End-DevOps/**'
+      - '.github/workflows/q3-end-to-end-devops.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  end-to-end:
+    name: Build, Test, Deploy and Monitor
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    env:
+      COMPOSE_FILE: Assignment-2/Q2-MLflow-Monitoring/docker-compose.yml
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Verify Docker environment
+        run: |
+          docker --version
+          docker compose version
+
+      - name: Validate Docker Compose configuration
+        run: |
+          docker compose -f "$COMPOSE_FILE" config --quiet
+
+      - name: Build application images
+        run: |
+          docker compose -f "$COMPOSE_FILE" build
+
+      - name: Run automated tests
+        run: |
+          docker compose -f "$COMPOSE_FILE" run --rm api python -m pytest -v tests/test_app.py
+
+      - name: Deploy application stack
+        run: |
+          docker compose -f "$COMPOSE_FILE" up -d --no-build
+
+      - name: Verify application and monitoring
+        run: |
+          python3 - <<'PY'
+          import json
+          import time
+          import urllib.request
+
+          base = "http://localhost"
+
+          def get(url):
+              with urllib.request.urlopen(url, timeout=10) as response:
+                  return response.read().decode()
+
+          deadline = time.time() + 150
+          last_error = "Services have not become ready"
+
+          while time.time() < deadline:
+              try:
+                  api_health = json.loads(get(f"{base}:5002/health"))
+                  assert api_health.get("status") == "ok", api_health
+
+                  get(f"{base}:5001/health")
+                  get(f"{base}:9090/-/ready")
+                  json.loads(get(f"{base}:3000/api/health"))
+
+                  request = urllib.request.Request(
+                      f"{base}:5002/predict",
+                      data=json.dumps({
+                          "features": [5.1, 3.5, 1.4, 0.2]
+                      }).encode(),
+                      headers={"Content-Type": "application/json"},
+                      method="POST",
+                  )
+
+                  prediction = json.loads(
+                      urllib.request.urlopen(request, timeout=15)
+                      .read().decode()
+                  )
+
+                  assert prediction.get("class_name") == "setosa", prediction
+                  assert prediction.get("model") == "IrisClassifier", prediction
+
+                  metrics = get(f"{base}:5002/metrics")
+                  assert "iris_prediction_requests_total" in metrics, (
+                      "Prediction request metric was not found"
+                  )
+
+                  targets = json.loads(
+                      get(f"{base}:9090/api/v1/targets")
+                  )["data"]["activeTargets"]
+
+                  iris_targets = [
+                      target for target in targets
+                      if target.get("labels", {}).get("job") == "iris-api"
+                  ]
+
+                  if not iris_targets or not any(
+                      target.get("health") == "up"
+                      for target in iris_targets
+                  ):
+                      raise RuntimeError(
+                          "Prometheus iris-api target is not UP yet"
+                      )
+
+                  print("API health check: PASSED")
+                  print("MLflow health check: PASSED")
+                  print("Sample prediction: PASSED")
+                  print("Prediction metrics: PASSED")
+                  print("Prometheus iris-api target: UP")
+                  print("Grafana health check: PASSED")
+                  print("End-to-end verification: PASSED")
+                  break
+
+              except Exception as exc:
+                  last_error = str(exc)
+                  time.sleep(5)
+          else:
+              raise SystemExit(
+                  f"End-to-end verification failed: {last_error}"
+              )
+          PY
+
+      - name: Show deployed services
+        if: always()
+        run: |
+          docker compose -f "$COMPOSE_FILE" ps
+
+      - name: Show logs if a step failed
+        if: failure()
+        run: |
+          docker compose -f "$COMPOSE_FILE" logs --tail=100
+
+      - name: Clean up runner containers
+        if: always()
+        run: |
+          docker compose -f "$COMPOSE_FILE" down -v --remove-orphans || true
