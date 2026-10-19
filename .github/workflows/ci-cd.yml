@@ -26,7 +26,7 @@ jobs:
       - name: Verify application files
         run: |
           echo "Checking College ERP application..."
-          test -f Q2-Git-GitHub/college-erp/index.html
+          test -f Assignment-1/Q2-Git-GitHub/college-erp/index.html
           echo "Application files verified successfully."
 
   test:
@@ -41,9 +41,9 @@ jobs:
       - name: Run application tests
         run: |
           echo "Running College ERP tests..."
-          test -f Q2-Git-GitHub/college-erp/index.html
-          grep -q "<html" Q2-Git-GitHub/college-erp/index.html
-          grep -q "College ERP" Q2-Git-GitHub/college-erp/index.html
+          test -f Assignment-1/Q2-Git-GitHub/college-erp/index.html
+          grep -q "<html" Assignment-1/Q2-Git-GitHub/college-erp/index.html
+          grep -q "College ERP" Assignment-1/Q2-Git-GitHub/college-erp/index.html
           echo "All tests passed."
 
   package:
@@ -58,7 +58,7 @@ jobs:
       - name: Create deployment package
         run: |
           mkdir package
-          cp Q2-Git-GitHub/college-erp/index.html package/
+          cp Assignment-1/Q2-Git-GitHub/college-erp/index.html package/
           echo "Application packaged successfully."
 
       - name: Upload package
@@ -86,7 +86,7 @@ jobs:
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Q2-Git-GitHub/college-erp
+          path: Assignment-1/Q2-Git-GitHub/college-erp
 
       - name: Deploy website
         id: deployment

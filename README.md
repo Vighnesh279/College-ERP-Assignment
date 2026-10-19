@@ -1,7 +1,6 @@
 # Agile and DevOps Assignment – College ERP System
 
 ## Application Domain
-
 **College ERP System**
 
 This project implements the Agile, Git/GitHub, and CI/CD practices required for the Agile and DevOps assignment.
@@ -16,7 +15,7 @@ The assignment is divided into three major parts:
 - **Q2 – Source Code Management using Git and GitHub**
 - **Q3 – CI/CD using GitHub Actions**
 
-The complete assignment PDF is also included in the root of this repository as `DEV_ASSI_1VIG.pdf`.
+The complete assignment PDF is also included in the root of this repository as `Assignment-1/DEV_ASSI_1VIG.pdf`.
 
 ---
 
@@ -72,7 +71,7 @@ The selected stories were moved through the Scrum workflow and completed.
 
 Detailed Q1 documentation and screenshots are available in:
 
-`Q1-Agile-Jira/`
+`Assignment-1/Q1-Agile-Jira/`
 
 ---
 
@@ -121,16 +120,16 @@ The project source code and assignment work are maintained in this GitHub reposi
 ```text
 College-ERP-Assignment/
 ├── README.md
-├── DEV_ASSI_1VIG.pdf
-├── Q1-Agile-Jira/
+├── Assignment-1/DEV_ASSI_1VIG.pdf
+├── Assignment-1/Q1-Agile-Jira/
 │   ├── README.md
 │   └── Screenshots/
-├── Q2-Git-GitHub/
+├── Assignment-1/Q2-Git-GitHub/
 │   ├── README.md
 │   ├── Screenshots/
 │   └── college-erp/
 │       └── index.html
-├── Q3-CI-CD/
+├── Assignment-1/Q3-CI-CD/
 │   ├── README.md
 │   └── Screenshots/
 └── .github/
@@ -140,7 +139,7 @@ College-ERP-Assignment/
 
 Detailed Q2 documentation and screenshots are available in:
 
-`Q2-Git-GitHub/`
+`Assignment-1/Q2-Git-GitHub/`
 
 ---
 
@@ -187,7 +186,7 @@ The Build stage:
 Application file verified:
 
 ```text
-Q2-Git-GitHub/college-erp/index.html
+Assignment-1/Q2-Git-GitHub/college-erp/index.html
 ```
 
 ## Test Stage
@@ -253,7 +252,7 @@ The College ERP application was successfully packaged and deployed through the a
 
 Detailed Q3 documentation and screenshots are available in:
 
-`Q3-CI-CD/`
+`Assignment-1/Q3-CI-CD/`
 
 ---
 
@@ -263,19 +262,19 @@ Detailed Q3 documentation and screenshots are available in:
 College-ERP-Assignment/
 │
 ├── README.md
-├── DEV_ASSI_1VIG.pdf
+├── Assignment-1/DEV_ASSI_1VIG.pdf
 │
-├── Q1-Agile-Jira/
+├── Assignment-1/Q1-Agile-Jira/
 │   ├── README.md
 │   └── Screenshots/
 │
-├── Q2-Git-GitHub/
+├── Assignment-1/Q2-Git-GitHub/
 │   ├── README.md
 │   ├── Screenshots/
 │   └── college-erp/
 │       └── index.html
 │
-├── Q3-CI-CD/
+├── Assignment-1/Q3-CI-CD/
 │   ├── README.md
 │   └── Screenshots/
 │
