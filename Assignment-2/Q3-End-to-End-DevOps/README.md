@@ -574,5 +574,10 @@ This project integrates Agile planning, source code management, automated build 
 
 The reuse of the existing Iris prediction application reduces duplicate development work and allows the Q3 assignment to focus on integrating and demonstrating the complete pipeline. Successful completion will be established by the actual GitHub Actions run, application health checks, automated test results, and monitoring verification.
 
+## Architecture and Execution Evidence
 
+The end-to-end architecture diagram and component descriptions are documented in the file architecture.md.
 
+The Q3 GitHub Actions workflow is defined in .github/workflows/q3-end-to-end-devops.yml.
+
+Jira planning screenshots and workflow execution evidence are stored in the Screenshots/ directory.
