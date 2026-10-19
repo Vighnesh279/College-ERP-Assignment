@@ -332,3 +332,65 @@ The repository contains the assignment documentation, application source code, J
 The College ERP System was used to demonstrate Agile planning with Jira, source-code management using Git and GitHub, and automated CI/CD using GitHub Actions.
 
 The project covers the required activities for Q1, Q2, and Q3 and maintains the corresponding documentation and evidence within the GitHub repository.
+\---
+
+
+
+# Additional Assignments
+
+
+
+## Assignment 2 — DevOps Implementation
+
+
+
+This assignment covers CI/CD automation, Docker containerization, MLflow machine learning lifecycle management, Prometheus/Grafana monitoring, and end-to-end DevOps pipeline integration.
+
+
+
+Question paper: `Assignment-2/AGILE ASSIGNMENT NO 2.pdf`
+
+
+
+\- \*\*Q1 — CI/CD and Docker:\*\* `Assignment-2/Q1-CI-CD-Docker/`
+
+\- \*\*Q2 — MLflow and Monitoring:\*\* `Assignment-2/Q2-MLflow-Monitoring/`
+
+\- \*\*Q3 — End-to-End DevOps:\*\* `Assignment-2/Q3-End-to-End-DevOps/`
+
+
+
+Documentation: `Assignment-2/README.md`
+
+
+
+Status: In progress
+
+
+
+## Level-Up Assignment — Agile Software Development
+
+
+
+This assignment covers Scrum implementation, Agile models, and managing changing customer requirements.
+
+
+
+Question paper: `Level-Up-Assignment/LEVEL UP ASSIGNMENT.pdf`
+
+
+
+\- \*\*Q1 — Scrum and Jira:\*\* `Level-Up-Assignment/Q1-Scrum-Jira/`
+
+\- \*\*Q2 — Agile Models:\*\* `Level-Up-Assignment/Q2-Agile-Models/`
+
+\- \*\*Q3 — Changing Requirements:\*\* `Level-Up-Assignment/Q3-Changing-Requirements/`
+
+
+
+Documentation: `Level-Up-Assignment/README.md`
+
+
+
+Status: In progress
+
