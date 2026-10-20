@@ -1,8 +1,8 @@
-\# Q3 End-to-End DevOps Architecture
+# Q3 End-to-End DevOps Architecture
 
 
 
-\## Architecture Diagram
+## Architecture Diagram
 
 
 
@@ -10,29 +10,29 @@
 
 flowchart TD
 
-&#x20;   A\[Jira: Backlog and Sprint Planning]
+&#x20;   A[Jira: Backlog and Sprint Planning]
 
-&#x20;   B\[Git and GitHub Repository]
+&#x20;   B[Git and GitHub Repository]
 
-&#x20;   C\[GitHub Actions CI/CD]
+&#x20;   C[GitHub Actions CI/CD]
 
-&#x20;   D\[Docker Image Build]
+&#x20;   D[Docker Image Build]
 
-&#x20;   E\[Automated Pytest Tests]
+&#x20;   E[Automated Pytest Tests]
 
 &#x20;   F{Tests Passed?}
 
-&#x20;   G\[Docker Compose Deployment]
+&#x20;   G[Docker Compose Deployment]
 
-&#x20;   H\[MLflow Tracking and Model Registry]
+&#x20;   H[MLflow Tracking and Model Registry]
 
-&#x20;   I\[Flask Iris Prediction API]
+&#x20;   I[Flask Iris Prediction API]
 
-&#x20;   J\[Prometheus Metrics Collection]
+&#x20;   J[Prometheus Metrics Collection]
 
-&#x20;   K\[Grafana Monitoring Dashboard]
+&#x20;   K[Grafana Monitoring Dashboard]
 
-&#x20;   L\[Health and Prediction Verification]
+&#x20;   L[Health and Prediction Verification]
 
 
 
@@ -46,7 +46,7 @@ flowchart TD
 
 &#x20;   E --> F
 
-&#x20;   F -- No --> M\[Pipeline Failure and Logs]
+&#x20;   F -- No --> M[Pipeline Failure and Logs]
 
 &#x20;   F -- Yes --> G
 
@@ -66,7 +66,7 @@ flowchart TD
 
 
 
-\## Component Responsibilities
+## Component Responsibilities
 
 
 
@@ -94,21 +94,21 @@ flowchart TD
 
 
 
-\## Execution Flow
+## Execution Flow
 
 
 
-1\. Project work is organized in Jira using a Scrum backlog and sprint.
+1. Project work is organized in Jira using a Scrum backlog and sprint.
 
-2\. Source code and configuration changes are committed and pushed to GitHub.
+2. Source code and configuration changes are committed and pushed to GitHub.
 
-3\. GitHub Actions validates the Compose configuration, builds images, and runs automated tests.
+3. GitHub Actions validates the Compose configuration, builds images, and runs automated tests.
 
-4\. Following successful tests, the workflow starts the Docker Compose application stack.
+4. Following successful tests, the workflow starts the Docker Compose application stack.
 
-5\. The workflow verifies MLflow, the prediction API, a sample prediction, Prometheus metrics, the Prometheus target, and Grafana health.
+5. The workflow verifies MLflow, the prediction API, a sample prediction, Prometheus metrics, the Prometheus target, and Grafana health.
 
-6\. The resulting workflow status and logs provide a record of the execution.
+6. The resulting workflow status and logs provide a record of the execution.
 
 
 

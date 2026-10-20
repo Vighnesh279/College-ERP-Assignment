@@ -1,8 +1,8 @@
-\# Q3 - End-to-End DevOps Pipeline for an ML Prediction Service
+# Q3 - End-to-End DevOps Pipeline for an ML Prediction Service
 
 
 
-\## 1. Project Overview
+## 1. Project Overview
 
 
 
@@ -18,7 +18,7 @@ A dedicated GitHub Actions workflow will integrate these components into a repea
 
 
 
-\## 2. Problem Statement
+## 2. Problem Statement
 
 
 
@@ -26,29 +26,29 @@ Develop and demonstrate an integrated DevOps workflow for a machine learning pre
 
 
 
-\## 3. Objectives
+## 3. Objectives
 
 
 
-\- Apply Agile planning practices to organize project requirements, user stories, tasks, and acceptance criteria.
+- Apply Agile planning practices to organize project requirements, user stories, tasks, and acceptance criteria.
 
-\- Maintain application code and configuration files using Git and GitHub.
+- Maintain application code and configuration files using Git and GitHub.
 
-\- Implement an automated CI/CD workflow using GitHub Actions.
+- Implement an automated CI/CD workflow using GitHub Actions.
 
-\- Execute automated tests to validate application functionality.
+- Execute automated tests to validate application functionality.
 
-\- Build and run application containers using Docker and Docker Compose.
+- Build and run application containers using Docker and Docker Compose.
 
-\- Integrate MLflow for experiment tracking and model registration.
+- Integrate MLflow for experiment tracking and model registration.
 
-\- Monitor application activity using Prometheus and Grafana.
+- Monitor application activity using Prometheus and Grafana.
 
-\- Verify deployment and document the complete pipeline with an architecture diagram and execution results.
+- Verify deployment and document the complete pipeline with an architecture diagram and execution results.
 
 
 
-\## 4. Technology Stack
+## 4. Technology Stack
 
 
 
@@ -84,7 +84,7 @@ Develop and demonstrate an integrated DevOps workflow for a machine learning pre
 
 
 
-\## 5. Project Architecture
+## 5. Project Architecture
 
 
 
@@ -96,37 +96,37 @@ The following diagram represents the intended end-to-end workflow.
 
 flowchart TD
 
-&#x20;   A\[Jira Agile Planning] --> B\[Git and GitHub]
+&#x20;   A[Jira Agile Planning] --> B[Git and GitHub]
 
-&#x20;   B --> C\[GitHub Actions Trigger]
+&#x20;   B --> C[GitHub Actions Trigger]
 
-&#x20;   C --> D\[Build Docker Images]
+&#x20;   C --> D[Build Docker Images]
 
-&#x20;   D --> E\[Run Automated Tests]
+&#x20;   D --> E[Run Automated Tests]
 
 &#x20;   E --> F{Tests Passed?}
 
-&#x20;   F -- No --> G\[Report Pipeline Failure]
+&#x20;   F -- No --> G[Report Pipeline Failure]
 
-&#x20;   F -- Yes --> H\[Deploy with Docker Compose]
+&#x20;   F -- Yes --> H[Deploy with Docker Compose]
 
-&#x20;   H --> I\[MLflow Tracking and Model Registry]
+&#x20;   H --> I[MLflow Tracking and Model Registry]
 
-&#x20;   I --> J\[Flask Prediction API]
+&#x20;   I --> J[Flask Prediction API]
 
-&#x20;   J --> K\[Prometheus Metrics Collection]
+&#x20;   J --> K[Prometheus Metrics Collection]
 
-&#x20;   K --> L\[Grafana Dashboard]
+&#x20;   K --> L[Grafana Dashboard]
 
-&#x20;   J --> M\[Health and Prediction Verification]
+&#x20;   J --> M[Health and Prediction Verification]
 
-&#x20;   M --> N\[Pipeline Result]
+&#x20;   M --> N[Pipeline Result]
 
 ```
 
 
 
-\## 6. Agile Planning
+## 6. Agile Planning
 
 
 
@@ -134,7 +134,7 @@ Agile practices are used to organize development work into manageable tasks. The
 
 
 
-\### Proposed Product Backlog
+### Proposed Product Backlog
 
 
 
@@ -156,33 +156,33 @@ Agile practices are used to organize development work into manageable tasks. The
 
 
 
-\### Example User Story
+### Example User Story
 
 
 
-\*\*Title:\*\* Automate deployment of the ML prediction service.
+**Title:** Automate deployment of the ML prediction service.
 
 
 
-\*\*User Story:\*\* As a developer, I want the application to be built, tested, and deployed automatically so that code changes can be validated consistently.
+**User Story:** As a developer, I want the application to be built, tested, and deployed automatically so that code changes can be validated consistently.
 
 
 
-\*\*Acceptance Criteria:\*\*
+**Acceptance Criteria:**
 
 
 
-1\. The workflow triggers when relevant project files are pushed to the main branch or submitted through a pull request.
+1. The workflow triggers when relevant project files are pushed to the main branch or submitted through a pull request.
 
-2\. The application Docker images build successfully.
+2. The application Docker images build successfully.
 
-3\. Automated tests execute and report their results.
+3. Automated tests execute and report their results.
 
-4\. The deployment services start successfully when the required tests pass.
+4. The deployment services start successfully when the required tests pass.
 
-5\. The application health endpoint responds successfully.
+5. The application health endpoint responds successfully.
 
-6\. The monitoring service can collect application metrics.
+6. The monitoring service can collect application metrics.
 
 
 
@@ -190,7 +190,7 @@ The backlog items and acceptance criteria are proposed planning artifacts and sh
 
 
 
-\## 7. Git and GitHub Integration
+## 7. Git and GitHub Integration
 
 
 
@@ -230,7 +230,7 @@ Meaningful commits and the main branch are used to maintain a traceable project 
 
 
 
-\## 8. CI/CD Pipeline Design
+## 8. CI/CD Pipeline Design
 
 
 
@@ -238,7 +238,7 @@ The Q3 GitHub Actions pipeline is intended to contain the following stages.
 
 
 
-\### Stage 1: Checkout
+### Stage 1: Checkout
 
 
 
@@ -246,7 +246,7 @@ Retrieve the latest repository contents from GitHub.
 
 
 
-\### Stage 2: Build
+### Stage 2: Build
 
 
 
@@ -254,7 +254,7 @@ Build the container images required by the ML prediction application and its sup
 
 
 
-\### Stage 3: Test
+### Stage 3: Test
 
 
 
@@ -262,7 +262,7 @@ Execute automated tests using Pytest to validate the homepage, health endpoint, 
 
 
 
-\### Stage 4: Deployment
+### Stage 4: Deployment
 
 
 
@@ -270,7 +270,7 @@ Start the required application services using Docker Compose after successful va
 
 
 
-\### Stage 5: Health Verification
+### Stage 5: Health Verification
 
 
 
@@ -278,7 +278,7 @@ Check that the MLflow service and prediction API are available. Submit a sample 
 
 
 
-\### Stage 6: Monitoring Verification
+### Stage 6: Monitoring Verification
 
 
 
@@ -286,7 +286,7 @@ Check the Prometheus target and metrics endpoint. Confirm that Grafana is availa
 
 
 
-\### Stage 7: Pipeline Result
+### Stage 7: Pipeline Result
 
 
 
@@ -298,7 +298,7 @@ The actual end-to-end workflow result will be recorded after the Q3 GitHub Actio
 
 
 
-\## 9. Docker-Based Deployment
+## 9. Docker-Based Deployment
 
 
 
@@ -310,15 +310,15 @@ The existing Q2 configuration includes:
 
 
 
-\- \*\*MLflow:\*\* Experiment tracking and model registry.
+- **MLflow:** Experiment tracking and model registry.
 
-\- \*\*Trainer:\*\* Machine learning model training and registration.
+- **Trainer:** Machine learning model training and registration.
 
-\- \*\*API:\*\* Flask prediction service.
+- **API:** Flask prediction service.
 
-\- \*\*Prometheus:\*\* Application metrics collection.
+- **Prometheus:** Application metrics collection.
 
-\- \*\*Grafana:\*\* Monitoring dashboard.
+- **Grafana:** Monitoring dashboard.
 
 
 
@@ -326,7 +326,7 @@ The project will reuse the existing configuration wherever practical instead of 
 
 
 
-\### Local Deployment Commands
+### Local Deployment Commands
 
 
 
@@ -340,7 +340,7 @@ Start the application stack:
 
 ```cmd
 
-docker compose -f Assignment-2\\Q2-MLflow-Monitoring\\docker-compose.yml up --build -d
+docker compose -f Assignment-2\Q2-MLflow-Monitoring\\docker-compose.yml up --build -d
 
 ```
 
@@ -352,7 +352,7 @@ Check service status:
 
 ```cmd
 
-docker compose -f Assignment-2\\Q2-MLflow-Monitoring\\docker-compose.yml ps
+docker compose -f Assignment-2\Q2-MLflow-Monitoring\\docker-compose.yml ps
 
 ```
 
@@ -364,7 +364,7 @@ View application logs:
 
 ```cmd
 
-docker compose -f Assignment-2\\Q2-MLflow-Monitoring\\docker-compose.yml logs --tail=50
+docker compose -f Assignment-2\Q2-MLflow-Monitoring\\docker-compose.yml logs --tail=50
 
 ```
 
@@ -376,13 +376,13 @@ Stop the application stack:
 
 ```cmd
 
-docker compose -f Assignment-2\\Q2-MLflow-Monitoring\\docker-compose.yml down
+docker compose -f Assignment-2\Q2-MLflow-Monitoring\\docker-compose.yml down
 
 ```
 
 
 
-\## 10. Application and Monitoring Endpoints
+## 10. Application and Monitoring Endpoints
 
 
 
@@ -404,13 +404,13 @@ The prediction API exposes the following endpoints:
 
 
 
-\- `GET /` - Application information.
+- `GET /` - Application information.
 
-\- `GET /health` - Application health status.
+- `GET /health` - Application health status.
 
-\- `POST /predict` - Prediction using four numeric Iris features.
+- `POST /predict` - Prediction using four numeric Iris features.
 
-\- `GET /metrics` - Prometheus metrics.
+- `GET /metrics` - Prometheus metrics.
 
 
 
@@ -422,7 +422,7 @@ Example prediction request:
 
 {
 
-&#x20; "features": \[5.1, 3.5, 1.4, 0.2]
+&#x20; "features": [5.1, 3.5, 1.4, 0.2]
 
 }
 
@@ -434,7 +434,7 @@ The API returns a prediction, the class name, and registered model information w
 
 
 
-\## 11. Automated Testing
+## 11. Automated Testing
 
 
 
@@ -442,15 +442,15 @@ The existing Q2 application contains five automated tests covering:
 
 
 
-1\. Homepage response.
+1. Homepage response.
 
-2\. Health endpoint.
+2. Health endpoint.
 
-3\. Invalid prediction input.
+3. Invalid prediction input.
 
-4\. Successful prediction.
+4. Successful prediction.
 
-5\. Prometheus metrics endpoint.
+5. Prometheus metrics endpoint.
 
 
 
@@ -460,13 +460,13 @@ Run the tests from the repository root:
 
 ```cmd
 
-docker compose -f Assignment-2\\Q2-MLflow-Monitoring\\docker-compose.yml run --rm api python -m pytest -v tests/test\_app.py
+docker compose -f Assignment-2\Q2-MLflow-Monitoring\\docker-compose.yml run --rm api python -m pytest -v tests/test_app.py
 
 ```
 
 
 
-\*\*Previously verified local baseline:\*\* 5 tests passed, with 9 non-fatal dependency deprecation warnings.
+**Previously verified local baseline:** 5 tests passed, with 9 non-fatal dependency deprecation warnings.
 
 
 
@@ -474,7 +474,7 @@ This baseline result does not by itself confirm that the new Q3 GitHub Actions p
 
 
 
-\## 12. Monitoring and Observability
+## 12. Monitoring and Observability
 
 
 
@@ -482,11 +482,11 @@ Prometheus scrapes metrics exposed by the Flask prediction API. The Grafana dash
 
 
 
-\- \*\*Prediction Requests per Minute:\*\* Shows API request activity.
+- **Prediction Requests per Minute:** Shows API request activity.
 
-\- \*\*Prediction Errors per Minute:\*\* Shows recorded prediction errors.
+- **Prediction Errors per Minute:** Shows recorded prediction errors.
 
-\- \*\*Average Prediction Latency:\*\* Shows the average time spent processing predictions.
+- **Average Prediction Latency:** Shows the average time spent processing predictions.
 
 
 
@@ -494,7 +494,7 @@ These metrics help demonstrate application observability after deployment. The P
 
 
 
-\## 13. Validation and Expected Results
+## 13. Validation and Expected Results
 
 
 
@@ -532,7 +532,7 @@ Actual CI/CD outcomes will be documented after the workflow is executed. Expecte
 
 
 
-\## 14. Screenshots and Execution Evidence
+## 14. Screenshots and Execution Evidence
 
 
 
@@ -540,23 +540,23 @@ The `Screenshots/` folder is reserved for relevant execution evidence, including
 
 
 
-1\. Jira backlog and sprint planning.
+1. Jira backlog and sprint planning.
 
-2\. GitHub repository and Q3 workflow configuration.
+2. GitHub repository and Q3 workflow configuration.
 
-3\. GitHub Actions workflow execution and job results.
+3. GitHub Actions workflow execution and job results.
 
-4\. Successful automated testing.
+4. Successful automated testing.
 
-5\. Docker Compose service status.
+5. Docker Compose service status.
 
-6\. Prediction API response.
+6. Prediction API response.
 
-7\. Prometheus target and metrics verification.
+7. Prometheus target and metrics verification.
 
-8\. Grafana monitoring dashboard.
+8. Grafana monitoring dashboard.
 
-9\. Final integrated pipeline result.
+9. Final integrated pipeline result.
 
 
 
@@ -564,7 +564,7 @@ Only genuine screenshots or actual command output should be included as executio
 
 
 
-\## 15. Conclusion
+## 15. Conclusion
 
 
 
@@ -576,7 +576,7 @@ The reuse of the existing Iris prediction application reduces duplicate developm
 
 ## Architecture and Execution Evidence
 
-The end-to-end architecture diagram and component descriptions are documented in the file architecture.md.
+The end-to-end architecture diagram and component descriptions are documented in [architecture.md](architecture.md).
 
 The Q3 GitHub Actions workflow is defined in .github/workflows/q3-end-to-end-devops.yml.
 
