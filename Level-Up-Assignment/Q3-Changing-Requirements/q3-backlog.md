@@ -1,14 +1,14 @@
-\# Q3 — Managing Changing Requirements
+# Q3 — Managing Changing Requirements
 
 
 
-\## Project
+## Project
 
 College ERP System
 
 
 
-\## Scenario
+## Scenario
 
 The College ERP team is developing a student portal.
 
@@ -20,17 +20,17 @@ according to business value, urgency, and available resources.
 
 
 
-\## 1. Initial Requirements
+## 1. Initial Requirements
 
 
 
-1\. Students must log in using valid credentials.
+1. Students must log in using valid credentials.
 
-2\. Students must view an academic dashboard.
+2. Students must view an academic dashboard.
 
-3\. Students must view subject-wise attendance percentages.
+3. Students must view subject-wise attendance percentages.
 
-4\. Students must view their examination results.
+4. Students must view their examination results.
 
 
 
@@ -40,7 +40,7 @@ warning for attendance below 75%.
 
 
 
-\## 2. Initial Product Backlog
+## 2. Initial Product Backlog
 
 
 
@@ -64,7 +64,7 @@ academic exercise, not measurements from an actual team.
 
 
 
-\## 3. Initial Iteration Plan
+## 3. Initial Iteration Plan
 
 
 
@@ -80,13 +80,13 @@ simulated tester/reviewer.
 
 Planned work:
 
-\- Verify the student login workflow.
+- Verify the student login workflow.
 
-\- Check that the academic dashboard displays sample data.
+- Check that the academic dashboard displays sample data.
 
-\- Verify the attendance percentage display.
+- Verify the attendance percentage display.
 
-\- Record defects and stakeholder feedback.
+- Record defects and stakeholder feedback.
 
 
 
@@ -96,7 +96,7 @@ has been implemented and tested.
 
 
 
-\## 4. Initial Baseline
+## 4. Initial Baseline
 
 
 
@@ -112,7 +112,7 @@ the simulated stakeholder review.
 
 
 
-\## 5. Simulated Stakeholder Feedback
+## 5. Simulated Stakeholder Feedback
 
 
 
@@ -150,7 +150,7 @@ to notice and act upon.
 
 
 
-\## 6. Updated Product Backlog
+## 6. Updated Product Backlog
 
 
 
@@ -176,7 +176,7 @@ development effort.
 
 
 
-\## 7. Prioritization After the Change
+## 7. Prioritization After the Change
 
 
 
@@ -200,15 +200,15 @@ but may be deferred if they do not fit within the iteration.
 
 Prioritization considers:
 
-\- Business value: helps students recognize attendance risk.
+- Business value: helps students recognize attendance risk.
 
-\- Urgency: requested during the current review.
+- Urgency: requested during the current review.
 
-\- Resources: the team has limited development and testing capacity.
+- Resources: the team has limited development and testing capacity.
 
 
 
-\## 8. Updated Iteration Plan
+## 8. Updated Iteration Plan
 
 
 
@@ -218,35 +218,35 @@ Iteration duration: 3 working days
 
 Simulated developer:
 
-\- Add the low-attendance warning to the dashboard.
+- Add the low-attendance warning to the dashboard.
 
-\- Verify that normal attendance does not show a warning.
+- Verify that normal attendance does not show a warning.
 
 
 
 Simulated tester/reviewer:
 
-\- Test attendance below 75%.
+- Test attendance below 75%.
 
-\- Test attendance equal to 75%.
+- Test attendance equal to 75%.
 
-\- Test attendance above 75%.
+- Test attendance above 75%.
 
-\- Record results and report defects.
+- Record results and report defects.
 
 
 
 Acceptance criteria for REQ-05:
 
-1\. A warning appears when attendance is below 75%.
+1. A warning appears when attendance is below 75%.
 
-2\. No low-attendance warning appears at exactly 75%.
+2. No low-attendance warning appears at exactly 75%.
 
-3\. No low-attendance warning appears above 75%.
+3. No low-attendance warning appears above 75%.
 
-4\. The displayed attendance percentage remains visible.
+4. The displayed attendance percentage remains visible.
 
-5\. The warning can be understood without relying on color alone.
+5. The warning can be understood without relying on color alone.
 
 
 
