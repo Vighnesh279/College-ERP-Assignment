@@ -294,7 +294,7 @@ Publish the workflow status in GitHub Actions so that successful and failed exec
 
 
 
-The Q3 GitHub Actions workflow completed successfully. Supporting execution screenshots are included in the Screenshots folder.uccessfully.
+The Q3 GitHub Actions workflow completed successfully. Supporting execution screenshots are included in the Screenshots folder. Review the corresponding GitHub Actions run and logs when presenting the assignment.
 
 
 
@@ -528,7 +528,7 @@ The following checks will be used to assess the completed pipeline.
 
 
 
-Actual CI/CD outcomes will be documented after the workflow is executed. Expected results are not presented as completed pipeline results.
+Actual CI/CD outcomes are documented through the completed GitHub Actions run and evidence in the Screenshots folder. Refer to ne results.
 
 
 
@@ -572,7 +572,7 @@ This project integrates Agile planning, source code management, automated build 
 
 
 
-The reuse of the existing Iris prediction application reduces duplicate development work and allows the Q3 assignment to focus on integrating and demonstrating the complete pipeline. Successful completion will be established by the actual GitHub Actions run, application health checks, automated test results, and monitoring verification.
+The reuse of the existing Iris prediction application reduces duplicate development work and allows the Q3 assignment to focus on integrating and demonstrating the complete pipeline. Successful execution is supported by the completed GitHub Actions run, application health checks, automated test results, and mand monitoring verification.
 
 ## Architecture and Execution Evidence
 
