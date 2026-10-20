@@ -18,7 +18,7 @@ This assignment covers CI/CD automation, Docker-based application deployment, ma
 
 
 
-Planned implementation:
+Implementation coverage:
 
 \- Automate application build and testing.
 
@@ -44,7 +44,7 @@ Project folder: `Q1-CI-CD-Docker/`
 
 
 
-Planned implementation:
+Implementation coverage:
 
 \- Track machine learning experiments, parameters, and metrics.
 
@@ -70,7 +70,7 @@ Project folder: `Q2-MLflow-Monitoring/`
 
 
 
-Planned implementation:
+Implementation coverage:
 
 \- Document the pipeline architecture.
 
@@ -95,6 +95,4 @@ Project folder: `Q3-End-to-End-DevOps/`
 Each question folder will contain the relevant source code, configuration files, documentation, screenshots, and other evidence produced during implementation.
 
 
-
-\*\*Status:\*\* In progress
-
+**Status:** Implemented; source code, screenshots, and execution evidence are included in the question folders.

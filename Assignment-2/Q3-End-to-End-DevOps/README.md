@@ -294,7 +294,7 @@ Publish the workflow status in GitHub Actions so that successful and failed exec
 
 
 
-The actual end-to-end workflow result will be recorded after the Q3 GitHub Actions workflow has been implemented and executed successfully.
+The Q3 GitHub Actions workflow completed successfully. Supporting execution screenshots are included in the Screenshots folder.uccessfully.
 
 
 

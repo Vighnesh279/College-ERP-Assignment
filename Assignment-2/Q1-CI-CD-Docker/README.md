@@ -136,7 +136,7 @@ Local execution confirmed that:
 - The health endpoint returned the expected JSON response.
 - The local application was stopped successfully after verification.
 
-The GitHub Actions result will be recorded after the workflow has run on GitHub.
+The GitHub Actions workflow completed successfully. Execution evidence is provided in the screenshots folder; verify the workfl
 
 ## 8. Conclusion
 
