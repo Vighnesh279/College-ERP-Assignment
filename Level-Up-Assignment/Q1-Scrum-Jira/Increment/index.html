@@ -1,226 +1,121 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>College ERP Student Portal</title>
 <style>
 * { box-sizing: border-box; }
-body {
-    margin: 0;
-    padding: 24px;
-    font-family: Arial, sans-serif;
-    background: #f1f5f9;
-    color: #1e293b;
-}
-main { max-width: 900px; margin: auto; }
-.panel {
-    background: white;
-    padding: 24px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px #00000010;
-}
-h1, h2 { color: #1d4ed8; }
-label { display: block; margin: 14px 0 6px; }
-input {
-    width: 100%;
-    padding: 11px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-}
-button {
-    padding: 11px 16px;
-    border: 0;
-    border-radius: 6px;
-    background: #2563eb;
-    color: white;
-    cursor: pointer;
-    margin-top: 12px;
-}
-.full { width: 100%; }
-.secondary { background: #475569; }
-.note { color: #475569; line-height: 1.6; font-size: 14px; }
-.message { font-weight: bold; margin-top: 14px; }
-.subject {
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 12px 0;
-}
-.subject h3 { margin-top: 0; }
-.attendance { font-weight: bold; }
-.warning {
-    margin-top: 10px;
-    padding: 12px;
-    border-left: 5px solid #b91c1c;
-    background: #fef2f2;
-    color: #7f1d1d;
-    border-radius: 4px;
-}
-.ok {
-    margin-top: 10px;
-    padding: 12px;
-    border-left: 5px solid #15803d;
-    background: #f0fdf4;
-    color: #166534;
-    border-radius: 4px;
-}
+body { margin: 0; font-family: Arial, sans-serif; background: #f1f5f9; color: #1e293b; }
+header { background: #173d67; color: white; text-align: center; padding: 18px; }
+header h1 { margin: 0 0 6px; font-size: 24px; }
+header p { margin: 0; }
+main { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 3px 14px #00000012; }
+h2, h3 { color: #1d4ed8; }
+label { display: block; font-weight: bold; margin: 14px 0 7px; }
+input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; }
+button { border: 0; border-radius: 6px; padding: 11px 16px; background: #1d6fb8; color: white; cursor: pointer; margin-top: 14px; }
+button.secondary { background: #475569; }
+button.full { width: 100%; }
+.demo, .info { background: #eff6ff; border-radius: 7px; padding: 12px; margin-top: 14px; font-size: 14px; line-height: 1.6; }
+.message { padding: 10px; border-radius: 6px; margin-top: 12px; }
+.error { background: #fee2e2; color: #991b1b; }
+.success { background: #dcfce7; color: #166534; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+.metric { background: #eff6ff; border-radius: 8px; padding: 14px; }
+.metric strong { display: block; margin-bottom: 8px; color: #1e40af; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 14px; }
+th, td { border-bottom: 1px solid #e2e8f0; padding: 10px; text-align: left; }
+th { background: #f8fafc; }
+.note { color: #475569; font-size: 13px; line-height: 1.6; }
 [hidden] { display: none !important; }
+@media (max-width: 650px) { .metrics { grid-template-columns: 1fr; } .card { padding: 18px; } table { font-size: 12px; } }
 </style>
 </head>
 <body>
+<header>
+  <h1>College ERP System</h1>
+  <p>Student Academic Portal</p>
+</header>
 <main>
-    <section class="panel" id="loginPanel">
-        <h1>College ERP — Student Login</h1>
-        <p>Access your academic dashboard and attendance summary.</p>
+  <section class="card" id="loginPanel">
+    <h2>Student Login</h2>
+    <p>Sign in to view your academic information.</p>
+    <form id="loginForm">
+      <label for="email">Registered Email</label>
+      <input id="email" type="email" required placeholder="Enter your college email">
+      <label for="password">Password</label>
+      <input id="password" type="password" required placeholder="Enter your password">
+      <button class="full" type="submit">Login</button>
+    </form>
+    <div class="demo"><strong>Demo credentials</strong><br>Email: student@college.edu<br>Password: Student@123</div>
+    <p id="loginMessage" class="message" role="status" aria-live="polite" hidden></p>
+    <p class="note">Academic demonstration only. Credentials are checked in browser JavaScript. This prototype does not provide real authentication or secure server-side access control.</p>
+  </section>
 
-        <form id="loginForm">
-            <label for="email">Student email</label>
-            <input id="email" type="email" required
-                   placeholder="student@college.edu">
-
-            <label for="password">Password</label>
-            <input id="password" type="password" required
-                   placeholder="Enter password">
-
-            <button class="full" type="submit">Login</button>
-        </form>
-
-        <p class="note">
-            Demo credentials: student@college.edu / Student@123
-        </p>
-        <p class="message" id="loginMessage" role="status"
-           aria-live="polite"></p>
-    </section>
-
-    <section class="panel" id="dashboard" hidden>
-        <h1>Student Academic Dashboard</h1>
-        <p>Welcome, Demo Student.</p>
-        <p class="note">
-            Updated increment: attendance warning requested during
-            the simulated stakeholder review.
-        </p>
-
-        <h2>Attendance Summary</h2>
-        <p>
-            Requirement: display a clear warning whenever attendance
-            is below 75%.
-        </p>
-
-        <div id="attendanceList"></div>
-        <p class="note" id="ruleSummary"></p>
-        <button class="secondary" id="logoutButton">Logout</button>
-    </section>
-
-    <section class="panel">
-        <h2>REQ-05 Acceptance Criteria</h2>
-        <ol>
-            <li>Attendance below 75% displays a clear warning.</li>
-            <li>Attendance equal to 75% does not display a warning.</li>
-            <li>Attendance above 75% does not display a warning.</li>
-            <li>The attendance percentage remains visible.</li>
-            <li>The warning uses text as well as visual styling.</li>
-        </ol>
-    </section>
-
-    <p class="note">
-        Academic prototype only. Login validation is performed in
-        browser JavaScript and is not suitable for production security.
-        All student details and attendance percentages are sample data.
-    </p>
+  <section class="card" id="dashboard" hidden>
+    <h2>Student Dashboard</h2>
+    <p>Welcome, Demo Student!</p>
+    <div id="successMessage" class="message success">Login successful. You are viewing sample academic data.</div>
+    <div class="metrics">
+      <div class="metric"><strong>Attendance</strong><span>Overall attendance: 81.1%</span></div>
+      <div class="metric"><strong>Examination Results</strong><span>Published subjects: 3</span></div>
+      <div class="metric"><strong>Course Information</strong><span>Current semester: Semester V</span></div>
+    </div>
+    <h3>Subject-wise Attendance</h3>
+    <table>
+      <thead><tr><th>Subject</th><th>Classes Attended</th><th>Total Classes</th><th>Attendance</th></tr></thead>
+      <tbody>
+        <tr><td>Artificial Intelligence</td><td>42</td><td>50</td><td>84%</td></tr>
+        <tr><td>DevOps</td><td>38</td><td>45</td><td>84.4%</td></tr>
+        <tr><td>Database Systems</td><td>36</td><td>48</td><td>75%</td></tr>
+      </tbody>
+    </table>
+    <h3>Examination Results</h3>
+    <table>
+      <thead><tr><th>Subject</th><th>Examination</th><th>Marks</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Artificial Intelligence</td><td>Internal Assessment</td><td>42/50</td><td>Pass</td></tr>
+        <tr><td>DevOps</td><td>Internal Assessment</td><td>44/50</td><td>Pass</td></tr>
+        <tr><td>Database Systems</td><td>Internal Assessment</td><td>39/50</td><td>Pass</td></tr>
+      </tbody>
+    </table>
+    <p class="note">All attendance, marks, and semester values are illustrative sample data, not real student records.</p>
+    <button id="logoutButton" class="secondary">Logout</button>
+  </section>
 </main>
-
 <script>
 const DEMO_EMAIL = "student@college.edu";
 const DEMO_PASSWORD = "Student@123";
-const ATTENDANCE_THRESHOLD = 75;
-
-const attendanceData = [
-    { subject: "Data Structures", percentage: 68 },
-    { subject: "Database Management Systems", percentage: 75 },
-    { subject: "Statistics", percentage: 82 }
-];
-
 function validateLogin(email, password) {
-    return typeof email === "string" &&
-        typeof password === "string" &&
-        email.trim() === DEMO_EMAIL &&
-        password === DEMO_PASSWORD;
+  return typeof email === "string" && typeof password === "string" &&
+    email.trim() === DEMO_EMAIL && password === DEMO_PASSWORD;
 }
-
-function getAttendanceMessage(percentage) {
-    if (percentage < ATTENDANCE_THRESHOLD) {
-        return "WARNING: Attendance is below 75%. Please contact your faculty advisor.";
-    }
-
-    return "No low-attendance warning. Attendance meets the 75% threshold.";
-}
-
-function renderAttendance() {
-    const list = document.getElementById("attendanceList");
-    list.replaceChildren();
-
-    attendanceData.forEach(function (item) {
-        const card = document.createElement("article");
-        card.className = "subject";
-
-        const heading = document.createElement("h3");
-        heading.textContent = item.subject;
-
-        const percentage = document.createElement("p");
-        percentage.className = "attendance";
-        percentage.textContent =
-            "Attendance: " + item.percentage + "%";
-
-        const status = document.createElement("div");
-        const message = getAttendanceMessage(item.percentage);
-        const belowThreshold =
-            item.percentage < ATTENDANCE_THRESHOLD;
-
-        status.className = belowThreshold ? "warning" : "ok";
-        status.textContent = message;
-
-        card.append(heading, percentage, status);
-        list.appendChild(card);
-    });
-
-    document.getElementById("ruleSummary").textContent =
-        "Rule applied: show a warning only when attendance is below " +
-        ATTENDANCE_THRESHOLD + "%.";
-}
-
-document.getElementById("loginForm").addEventListener(
-    "submit", function (event) {
-        event.preventDefault();
-
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const message = document.getElementById("loginMessage");
-
-        if (validateLogin(email, password)) {
-            message.textContent = "";
-            document.getElementById("loginPanel").hidden = true;
-            document.getElementById("dashboard").hidden = false;
-            renderAttendance();
-        } else {
-            message.textContent =
-                "Invalid email or password. Please try again.";
-            message.style.color = "#b91c1c";
-        }
-    }
-);
-
-document.getElementById("logoutButton").addEventListener(
-    "click", function () {
-        document.getElementById("dashboard").hidden = true;
-        document.getElementById("loginPanel").hidden = false;
-        document.getElementById("password").value = "";
-        document.getElementById("loginMessage").textContent =
-            "You have logged out.";
-    }
-);
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const message = document.getElementById("loginMessage");
+  if (validateLogin(email, password)) {
+    message.hidden = true;
+    document.getElementById("loginPanel").hidden = true;
+    document.getElementById("dashboard").hidden = false;
+  } else {
+    message.textContent = "Invalid email or password. Please try again.";
+    message.className = "message error";
+    message.hidden = false;
+  }
+});
+document.getElementById("logoutButton").addEventListener("click", function () {
+  document.getElementById("dashboard").hidden = true;
+  document.getElementById("loginPanel").hidden = false;
+  document.getElementById("password").value = "";
+  const message = document.getElementById("loginMessage");
+  message.textContent = "You have logged out.";
+  message.className = "message success";
+  message.hidden = false;
+});
 </script>
 </body>
 </html>
