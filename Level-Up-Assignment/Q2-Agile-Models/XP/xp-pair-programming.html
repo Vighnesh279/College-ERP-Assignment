@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XP Practical - College ERP</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    margin: 0;
+    padding: 30px 15px;
+    color: #1e293b;
+}
+.container {
+    max-width: 850px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 20px;
+}
+.panel {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px #00000012;
+}
+h1, h2 { color: #1d4ed8; }
+label { display: block; margin-top: 14px; }
+input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px;
+    margin-top: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+button {
+    padding: 11px 14px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.primary { width: 100%; background: #2563eb; color: white; }
+.secondary { background: #e2e8f0; color: #1e293b; }
+#message { margin-top: 15px; font-weight: bold; overflow-wrap: anywhere; }
+.note { color: #475569; font-size: 14px; line-height: 1.6; }
+li { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <section class="panel">
+        <h1>College ERP Login</h1>
+        <p>XP practical: incremental development and testing.</p>
+
+        <form id="loginForm">
+            <label for="email">Student Email</label>
+            <input id="email" type="email" required
+                   placeholder="student@college.edu">
+
+            <label for="password">Password</label>
+            <input id="password" type="password" required
+                   placeholder="Enter password">
+
+            <button class="secondary" type="button" id="togglePassword">
+                Show password
+            </button>
+
+            <button class="primary" type="submit">Login</button>
+        </form>
+
+        <p class="note">
+            Demo credentials: student@college.edu /
+            Student@123
+        </p>
+        <p id="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+        <h2>XP Practices Demonstrated</h2>
+        <ul>
+            <li><b>Pair programming:</b> Driver implements the change;
+                Navigator reviews logic and test cases.</li>
+            <li><b>Small releases:</b> Add password visibility and
+                login validation as small changes.</li>
+            <li><b>Continuous testing:</b> Check valid and invalid
+                credentials after implementation.</li>
+            <li><b>Feedback:</b> Show an immediate, understandable
+                message after each login attempt.</li>
+            <li><b>Simple design:</b> Keep the demonstration small
+                and focused on login behavior.</li>
+        </ul>
+        <p class="note">
+            This is a browser-only academic demonstration. Login
+            credentials are checked in JavaScript and are not secure
+            authentication for a real application.
+        </p>
+    </section>
+</div>
+
+<script>
+const form = document.getElementById("loginForm");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const message = document.getElementById("message");
+const togglePassword = document.getElementById("togglePassword");
+
+togglePassword.addEventListener("click", function () {
+    const isHidden = password.type === "password";
+    password.type = isHidden ? "text" : "password";
+    togglePassword.textContent = isHidden
+        ? "Hide password"
+        : "Show password";
+});
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (
+        email.value.trim() === "student@college.edu" &&
+        password.value === "Student@123"
+    ) {
+        message.textContent =
+            "Login successful. Student portal access demonstrated.";
+        message.style.color = "green";
+    } else {
+        message.textContent =
+            "Invalid email or password. Please try again.";
+        message.style.color = "crimson";
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDD - College ERP Login</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    margin: 0;
+    padding: 25px;
+}
+main {
+    max-width: 800px;
+    margin: auto;
+}
+section {
+    background: white;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000010;
+}
+h1, h2 { color: #1d4ed8; }
+input, button {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+input { border: 1px solid #cbd5e1; }
+button {
+    border: 0;
+    color: white;
+    background: #2563eb;
+    cursor: pointer;
+}
+.test {
+    padding: 12px;
+    margin: 9px 0;
+    background: #f8fafc;
+    border-left: 5px solid #94a3b8;
+    overflow-wrap: anywhere;
+}
+.pass { border-left-color: #15803d; }
+.fail { border-left-color: #dc2626; }
+.note { color: #475569; line-height: 1.6; }
+#summary { font-weight: bold; }
+</style>
+</head>
+<body>
+<main>
+    <section>
+        <h1>College ERP Login — TDD Practical</h1>
+        <p class="note">
+            Test-Driven Development: write the tests first, implement the
+            smallest solution that passes, then improve the code.
+        </p>
+        <h2>Automated Test Results</h2>
+        <p id="summary">Tests have not run yet.</p>
+        <div id="results"></div>
+        <button id="runTests">Run Tests Again</button>
+    </section>
+
+    <section>
+        <h2>Login Feature</h2>
+        <form id="loginForm">
+            <label for="email">Student Email</label>
+            <input id="email" type="email" required
+                   placeholder="student@college.edu">
+
+            <label for="password">Password</label>
+            <input id="password" type="password" required
+                   placeholder="Enter password">
+
+            <button type="submit">Test Login</button>
+        </form>
+        <p id="loginMessage" aria-live="polite"></p>
+        <p class="note">
+            Demo credentials: student@college.edu / Student@123.
+            This is a browser-only academic demonstration, not secure
+            production authentication.
+        </p>
+    </section>
+</main>
+
+<script src="login.js"></script>
+<script>
+function runTests() {
+    const results = document.getElementById("results");
+    const summary = document.getElementById("summary");
+    results.replaceChildren();
+
+    const tests = [
+        {
+            name: "Valid email and password should be accepted",
+            email: "student@college.edu",
+            password: "Student@123",
+            expected: true
+        },
+        {
+            name: "Incorrect password should be rejected",
+            email: "student@college.edu",
+            password: "WrongPassword",
+            expected: false
+        },
+        {
+            name: "Unknown email should be rejected",
+            email: "unknown@college.edu",
+            password: "Student@123",
+            expected: false
+        },
+        {
+            name: "Empty credentials should be rejected",
+            email: "",
+            password: "",
+            expected: false
+        }
+    ];
+
+    let passed = 0;
+
+    tests.forEach(function (test) {
+        let success = false;
+        let detail = "";
+
+        try {
+            if (typeof window.validateLogin !== "function") {
+                throw new Error("validateLogin() is not implemented yet");
+            }
+
+            const actual = window.validateLogin(
+                test.email,
+                test.password
+            );
+
+            success = actual === test.expected;
+            detail = success
+                ? "Expected result received."
+                : "Expected " + test.expected + ", received " + actual + ".";
+        } catch (error) {
+            detail = error.message;
+        }
+
+        const item = document.createElement("div");
+        item.className = "test " + (success ? "pass" : "fail");
+        item.textContent =
+            (success ? "PASS: " : "FAIL: ") + test.name + " — " + detail;
+        results.appendChild(item);
+
+        if (success) passed++;
+    });
+
+    summary.textContent =
+        passed + " of " + tests.length + " tests passed.";
+    summary.style.color = passed === tests.length ? "#15803d" : "#b91c1c";
+}
+
+document.getElementById("runTests").addEventListener("click", runTests);
+
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const message = document.getElementById("loginMessage");
+
+    if (typeof window.validateLogin !== "function") {
+        message.textContent = "Login implementation is not available yet.";
+        message.style.color = "#b91c1c";
+        return;
+    }
+
+    const valid = window.validateLogin(
+        document.getElementById("email").value,
+        document.getElementById("password").value
+    );
+
+    message.textContent = valid
+        ? "Login successful. Student portal access demonstrated."
+        : "Invalid email or password. Please try again.";
+    message.style.color = valid ? "#15803d" : "#b91c1c";
+});
+
+runTests();
+</script>
+</body>
+</html>

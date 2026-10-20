@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College ERP - Kanban Board</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    padding: 25px;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+header, .add-task, .board {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+}
+header h1 { color: #1d4ed8; }
+header p { color: #475569; line-height: 1.6; }
+.add-task, .column {
+    background: white;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 3px 12px #00000010;
+}
+.add-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+input, button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+input { flex: 1; min-width: 200px; }
+button {
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    border: none;
+}
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 15px;
+    align-items: start;
+}
+.column { min-height: 270px; }
+.column h2 { font-size: 19px; }
+.count { color: #64748b; font-size: 14px; }
+.task {
+    background: #f8fafc;
+    border: 1px solid #dbeafe;
+    border-left: 4px solid #3b82f6;
+    padding: 13px;
+    margin: 12px 0;
+    border-radius: 7px;
+    overflow-wrap: anywhere;
+}
+.task h3 { margin: 0 0 9px; font-size: 16px; }
+.task p { font-size: 13px; color: #475569; }
+.task button { margin: 4px 4px 0 0; font-size: 12px; }
+.secondary { background: #64748b; }
+.success { background: #15803d; }
+.warning { background: #b45309; }
+#notice { font-weight: bold; margin-top: 12px; }
+.note { color: #475569; font-size: 13px; line-height: 1.6; }
+@media (max-width: 760px) {
+    .board { grid-template-columns: 1fr; }
+    body { padding: 12px; }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>College ERP — Kanban Board</h1>
+    <p>Practical demonstration of visual workflow, continuous task movement,
+       and work-in-progress (WIP) limits.</p>
+</header>
+
+<section class="add-task">
+    <h2>Add a Task</h2>
+    <div class="add-row">
+        <input id="taskTitle" type="text"
+               placeholder="Enter a College ERP task">
+        <button id="addButton">Add to To Do</button>
+    </div>
+    <p id="notice" role="status" aria-live="polite"></p>
+    <p class="note">In Progress WIP limit: 2 tasks. Complete or return
+       an active task before starting another when the limit is reached.</p>
+</section>
+
+<main class="board">
+    <section class="column">
+        <h2>To Do</h2>
+        <p class="count" id="todoCount">0 tasks</p>
+        <div id="todo"></div>
+    </section>
+
+    <section class="column">
+        <h2>In Progress</h2>
+        <p class="count" id="progressCount">0 tasks</p>
+        <div id="inprogress"></div>
+    </section>
+
+    <section class="column">
+        <h2>Done</h2>
+        <p class="count" id="doneCount">0 tasks</p>
+        <div id="done"></div>
+    </section>
+</main>
+
+<footer class="note" style="max-width:1200px;margin:auto">
+    Academic demonstration only. Task data stays in the current browser
+    session and is not saved to a server.
+</footer>
+
+<script>
+const WIP_LIMIT = 2;
+
+let tasks = [
+    { id: 1, title: "Plan student login validation", status: "todo" },
+    { id: 2, title: "Design academic dashboard", status: "todo" },
+    { id: 3, title: "Check attendance percentage display", status: "inprogress" },
+    { id: 4, title: "Prepare examination results view", status: "done" }
+];
+
+let nextId = 5;
+
+const columns = {
+    todo: document.getElementById("todo"),
+    inprogress: document.getElementById("inprogress"),
+    done: document.getElementById("done")
+};
+
+const notice = document.getElementById("notice");
+
+function showNotice(text, isError = false) {
+    notice.textContent = text;
+    notice.style.color = isError ? "#b91c1c" : "#15803d";
+}
+
+function moveTask(id, newStatus) {
+    const task = tasks.find(item => item.id === id);
+    if (!task) return;
+
+    const activeCount = tasks.filter(
+        item => item.status === "inprogress"
+    ).length;
+
+    if (newStatus === "inprogress" &&
+        task.status !== "inprogress" &&
+        activeCount >= WIP_LIMIT) {
+        showNotice(
+            "WIP limit reached. Complete or return an active task first.",
+            true
+        );
+        return;
+    }
+
+    task.status = newStatus;
+    showNotice("Task status updated successfully.");
+    renderBoard();
+}
+
+function createTaskCard(task) {
+    const card = document.createElement("article");
+    card.className = "task";
+
+    const title = document.createElement("h3");
+    title.textContent = task.title;
+    card.appendChild(title);
+
+    const statusText = document.createElement("p");
+    statusText.textContent =
+        "Status: " + task.status.replace("inprogress", "In Progress");
+    card.appendChild(statusText);
+
+    if (task.status === "todo") {
+        const start = document.createElement("button");
+        start.textContent = "Start Task";
+        start.addEventListener("click", () =>
+            moveTask(task.id, "inprogress")
+        );
+        card.appendChild(start);
+    }
+
+    if (task.status === "inprogress") {
+        const complete = document.createElement("button");
+        complete.className = "success";
+        complete.textContent = "Mark Done";
+        complete.addEventListener("click", () =>
+            moveTask(task.id, "done")
+        );
+        card.appendChild(complete);
+
+        const back = document.createElement("button");
+        back.className = "secondary";
+        back.textContent = "Return to To Do";
+        back.addEventListener("click", () =>
+            moveTask(task.id, "todo")
+        );
+        card.appendChild(back);
+    }
+
+    if (task.status === "done") {
+        const reopen = document.createElement("button");
+        reopen.className = "secondary";
+        reopen.textContent = "Reopen Task";
+        reopen.addEventListener("click", () =>
+            moveTask(task.id, "todo")
+        );
+        card.appendChild(reopen);
+    }
+
+    return card;
+}
+
+function renderBoard() {
+    Object.values(columns).forEach(column => column.replaceChildren());
+
+    const counts = { todo: 0, inprogress: 0, done: 0 };
+
+    tasks.forEach(task => {
+        counts[task.status]++;
+        columns[task.status].appendChild(createTaskCard(task));
+    });
+
+    document.getElementById("todoCount").textContent =
+        counts.todo + " tasks";
+    document.getElementById("progressCount").textContent =
+        counts.inprogress + " of " + WIP_LIMIT + " WIP slots used";
+    document.getElementById("doneCount").textContent =
+        counts.done + " tasks";
+}
+
+document.getElementById("addButton").addEventListener("click", function () {
+    const input = document.getElementById("taskTitle");
+    const title = input.value.trim();
+
+    if (!title) {
+        showNotice("Enter a task name first.", true);
+        return;
+    }
+
+    tasks.push({ id: nextId++, title: title, status: "todo" });
+    input.value = "";
+    showNotice("New task added to To Do.");
+    renderBoard();
+});
+
+document.getElementById("taskTitle").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        document.getElementById("addButton").click();
+    }
+});
+
+renderBoard();
+</script>
+</body>
+</html>
